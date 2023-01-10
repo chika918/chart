@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.1.1/dist/chart.umd.min.js"></script>
+    <title>Document</title>
+    <style>
+        body{
+            width: 1200px;
+        }
+        .contentsRadar{
+            width: 1080px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .chara {
+            width: 32%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .radar {
+            display: flex;
+        }
+        .radar img {
+            width: 120px;
+        }
+        .radarChart {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <!--チャート-->
+        <div>
+            <h2>キャラクター</h2>
+            <div class="contentsRadar">
+                <div class="chara">
+                    <h3>ハローキティ</h3>
+                    <div class="radar">
+                        <a href="https://www.sanrio.co.jp/characters/hellokitty/">
+                            <img src="mv-hellokitty.png">
+                        </a>
+                        <div>
+                            <canvas class="radarChart" id="radar1"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="chara">
+                    <h3>マイメロディ</h3>
+                    <div class="radar">
+                        <a href="https://www.sanrio.co.jp/characters/mymelody/">
+                            <img src="list-mymelody.png" alt="">
+                        </a>
+                        <div>
+                            <canvas class="radarChart" id="radar2"></canvas>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="chara">
+                    <h3>ペックル</h3>
+                    <div class="radar">
+                        <a href="https://www.sanrio.co.jp/characters/pekkle/">
+                            <img src="list-pekkle.png" alt="">
+                        </a>
+                        <div>
+                            <canvas class="radarChart" id="radar3"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chara">
+                    <h3>ポチャッコ</h3>
+                    <div class="radar">
+                        <a href="https://www.sanrio.co.jp/characters/pochacco/">
+                            <img src="list-pochacco.png" alt="">
+                        </a>
+                        <div>
+                            <canvas class="radarChart" id="radar4"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chara">
+                    <h3>ハンギョドン</h3>
+                    <div class="radar">
+                        <a href="https://www.sanrio.co.jp/characters/">
+                            <img src="mv-hangyodon.png" alt="">
+                        </a>
+                        <div>
+                            <canvas class="radarChart" id="radar5"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        //レーダーチャート１
+        const ctx1 = document.getElementById('radar1');
+        const radar1 = new Chart(ctx1, {
+            type: 'radar',
+            data: {
+                labels: ["かわいさ","あざとさ","知名度","出会える度","注目度"],
+                datasets: [{
+                    data: [3.8,4,5,5,3.5],
+                    backgroundColor: "rgba(67, 133, 215, 0.5)",
+                    borderColor: "rgba(67, 133, 215, 1)",
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        max: 5,        //グラフの最大値
+                        min: 0,        //グラフの最小値
+                        ticks: {
+                            stepSize: 1  //目盛間隔
+                        }
+                    }
+                },
+                //凡例非表示
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                },
+            }
+        });
+
+        //レーダーチャート2
+        const ctx2 = document.getElementById('radar2');
+        const radar2 = new Chart(ctx2, {
+            type: 'radar',
+            data: {
+                labels: ["かわいさ","あざとさ","知名度","出会える度","注目度"],
+                datasets: [{
+                    data: [4.7,3.9,4.5,4.5,5],
+                    backgroundColor: "rgba(67, 133, 215, 0.5)",
+                    borderColor: "rgba(67, 133, 215, 1)",                    
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        max: 5,
+                        min: 0,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                },  
+                //凡例非表示
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                },
+            }
+        });
+
+        //レーダーチャート3
+        const ctx3 = document.getElementById('radar3');
+        const radar3 = new Chart(ctx3, {
+            type: 'radar',
+            data: {
+                labels: ["かわいさ","あざとさ","知名度","出会える度","注目度"],
+                datasets: [{
+                    data: [2,1,2.5,2,1.5],
+                    backgroundColor: "rgba(67, 133, 215, 0.5)",
+                    borderColor: "rgba(67, 133, 215, 1)",                    
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        max: 5,
+                        min: 0,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                },
+                //凡例非表示
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                },
+            }
+        });
+
+        //レーダーチャート4
+        const ctx4 = document.getElementById('radar4');
+        const radar4 = new Chart(ctx4, {
+            type: 'radar',
+            data: {
+                labels: ["かわいさ","あざとさ","知名度","出会える度","注目度"],
+                datasets: [{
+                    data: [4.8,4.3,5,4,3],
+                    backgroundColor: "rgba(67, 133, 215, 0.5)",
+                    borderColor: "rgba(67, 133, 215, 1)",                    
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        max: 5,
+                        min: 0,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                },
+                //凡例非表示
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                },
+            }
+        });
+        //レーダーチャート4
+        const ctx5 = document.getElementById('radar5');
+        const radar5 = new Chart(ctx5, {
+            type: 'radar',
+            data: {
+                labels: ["かわいさ","あざとさ","知名度","出会える度","注目度"],
+                datasets: [{
+                    data: [-1,1.2,3.5,2,4],
+                    backgroundColor: "rgba(67, 133, 215, 0.5)",
+                    borderColor: "rgba(67, 133, 215, 1)",                    
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        max: 5,
+                        min: 0,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                },
+                //凡例非表示
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                },
+            }
+        });
+        
+    </script>
+</body>
+</html>
