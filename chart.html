@@ -5,72 +5,159 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.1.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <title>Document</title>
     <style>
         body{
-            width: 1200px;
+            max-width: 1200px;
+        }
+        h2 {
+            text-align: center;
         }
         .contentsRadar{
-            width: 1080px;
-            margin: 0 auto;
+            max-width: 90%;
+            margin: 40px auto;
             display: flex;
             flex-wrap: wrap;
         }
         .chara {
             width: 32%;
+            min-width: 220px;
             margin: 0 auto;
             text-align: center;
         }
         .radar {
+            width: 100%;
             display: flex;
+            position: relative;
         }
-        .radar img {
-            width: 120px;
+        .image {
+            max-width: 100%;
+        }
+        .imgR {
+            width: 30%;
+            min-width: 70px;
+            margin: 0 auto;
+            position: absolute;    
+            top: 65px;
+
         }
         .radarChart {
+            position: relative;
             width: 100%;
-            margin: 0 auto;
+            min-width: 170px;
+            height: 200px;
+
+            margin-left: 80px;
         }
 
+        .contentsHorizontal {
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+        }
+        .contentsRank {
+            width: 8%;
+            min-width: 70px;
+            margin: 0 auto;
+        }
+        .contentRank{
+            width: 100%;
+            margin: 8px auto;
+        }
+        .imageH {
+            display: flex;
+        }
+        .img1 , .img2 , .img3 {
+            width: 60%;
+            margin: auto;
+        }
+        .imgH {
+            width: 70%;
+            margin: 0 auto;
+        }
+        .horizonralChart {
+            width: 85%;
+            min-width: 780px;
+            margin: 0 auto;
+        }
+        .game {
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        .contentsGame {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .check {
+            width: 25%;
+            margin: 0 auto;
+        }
+        .stamp {
+            width: 25%;
+            margin: 0 auto;
+        }
+        .imgG {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .tooltip {
+            position: relative;
+        }
+        p#toolTip {
+            display: none;
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            background: #545454;
+            font-size: 0.7rem;
+            color: #FFF;
+            border-radius: 3px;
+            filter: drop-shadow(0px 1px 4px #aaa);
+            padding: 7px;
+        }
     </style>
 </head>
 <body>
     <main>
-        <!--チャート-->
+        <!--レーダーチャート-->
         <div>
             <h2>キャラクター</h2>
             <div class="contentsRadar">
                 <div class="chara">
                     <h3>ハローキティ</h3>
                     <div class="radar">
-                        <a href="https://www.sanrio.co.jp/characters/hellokitty/">
-                            <img src="mv-hellokitty.png">
+                        <a class="image" href="https://www.sanrio.co.jp/characters/hellokitty/">
+                            <img class="imgR"  src="list-hellokitty.png">
                         </a>
-                        <div>
-                            <canvas class="radarChart" id="radar1"></canvas>
+                        <div class="radarChart">
+                            <canvas id="radar1" width="230" height="200"></canvas>
                         </div>
                     </div>
                 </div>
+
                 <div class="chara">
                     <h3>マイメロディ</h3>
                     <div class="radar">
-                        <a href="https://www.sanrio.co.jp/characters/mymelody/">
-                            <img src="list-mymelody.png" alt="">
+                        <a class="image" href="https://www.sanrio.co.jp/characters/mymelody/">
+                            <img class="imgR" src="list-mymelody.png" alt="">
                         </a>
-                        <div>
-                            <canvas class="radarChart" id="radar2"></canvas>
+                        <div class="radarChart">
+                            <canvas id="radar2" width="230" height="200"></canvas>
                         </div>
                     </div>
-                </div>
-    
+                </div>   
+
                 <div class="chara">
                     <h3>ペックル</h3>
                     <div class="radar">
-                        <a href="https://www.sanrio.co.jp/characters/pekkle/">
-                            <img src="list-pekkle.png" alt="">
+                        <a class="image" href="https://www.sanrio.co.jp/characters/pekkle/">
+                            <img class="imgR" src="list-pekkle.png" alt="">
                         </a>
-                        <div>
-                            <canvas class="radarChart" id="radar3"></canvas>
+                        <div class="radarChart">
+                            <canvas id="radar3" width="230" height="200"></canvas>
                         </div>
                     </div>
                 </div>
@@ -78,11 +165,11 @@
                 <div class="chara">
                     <h3>ポチャッコ</h3>
                     <div class="radar">
-                        <a href="https://www.sanrio.co.jp/characters/pochacco/">
-                            <img src="list-pochacco.png" alt="">
+                        <a class="image" href="https://www.sanrio.co.jp/characters/pochacco/">
+                            <img class="imgR" src="list-pochacco.png" alt="">
                         </a>
-                        <div>
-                            <canvas class="radarChart" id="radar4"></canvas>
+                        <div class="radarChart">
+                            <canvas id="radar4" width="230" height="200"></canvas>
                         </div>
                     </div>
                 </div>
@@ -90,14 +177,92 @@
                 <div class="chara">
                     <h3>ハンギョドン</h3>
                     <div class="radar">
-                        <a href="https://www.sanrio.co.jp/characters/">
-                            <img src="mv-hangyodon.png" alt="">
+                        <a class="image" href="https://www.sanrio.co.jp/characters/">
+                            <img class="imgR" src="list-hangyodon.png" alt="">
                         </a>
-                        <div>
-                            <canvas class="radarChart" id="radar5"></canvas>
+                        <div class="radarChart">
+                            <canvas id="radar5" width="230" height="200"></canvas>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!--横棒グラフ-->
+        <div>
+            <h2>Sanrio謎キャラランキング</h2>
+            <div class="contentsHorizontal">
+                <div class="contentsRank">
+                    <div class="contentRank">
+                        <a class="imageH" href="https://www.sanrio.co.jp/special/hagurumanstyle/">
+                            <img class="img1" src="1位.png" alt="">
+                            <img class="imgH" src="twitter-hagurumanstyle.png" alt="">
+                        </a>
+                    </div>
+                    <div class="contentRank">
+                        <a class="imageH" href="https://www.sanrio.co.jp/characters/warauonna/">
+                            <img class="img2" src="2位.png" alt="">
+                            <img class="imgH" src="list-warauonna.png" alt="">
+                        </a>
+                    </div>
+                    <div class="contentRank">
+                        <a class="imageH" href="https://www.sanrio.co.jp/characters/chunenheroineojisans/">
+                            <img class="img3" src="3位.png" alt="">
+                            <img class="imgH" src="mv-chunenheroineojisans.png" alt="">
+                        </a>
+                    </div>
+                    <div class="contentRank">
+                        <a href="https://www.sanrio.co.jp/characters/kappasan/">
+                            <img class="imgH" src="list-kappasan.png" alt="">
+                        </a>
+                    </div>
+                    <div class="contentRank">
+                        <a href="https://www.sanrio.co.jp/characters/hesuke/">
+                            <img class="imgH" src="list-hesuke.png" alt="">
+                        </a>
+                    </div>
+                    <div class="contentRank">
+                        <a href="https://www.sanrio.co.jp/characters/">
+                            <img class="imgH" src="list-hangyodon.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="horizonralChart">
+                    <canvas id="bar1" width="900"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!--コンテンツ-->
+        <div class="game">
+            <h2>息抜きコンテンツ</h2>
+            <div class="contentsGame">
+                <div class="check">
+                    <h3>くいしばり診断</h3>
+                    <div class="tooltip">
+                        <p id="toolTip">
+                            社会の歯ぐるまたち、ひとりひとりの口の中で勤務し、デンタルケアならぬ「メンタルケア」を仕事としている『歯ぐるまんすたいる』のメンタルチェック！
+                        </p>
+                        <a href="https://www.sanrio.co.jp/special/hagurumanstyle/diagnosis.html">
+                            <img class="imgG" id="checkEvent" src="digital-web-ha_kuishibari-680x384.png" alt="">
+                        </a>
+                    </div>
+
+                </div>
+                <div class="stamp">
+                    <h3>はぴだんぶいスタンプ</h3>
+                    <a href="https://store.line.me/stickershop/product/25723/ja">
+                        <img class="imgG" src="list-hapidanbui.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!--棒グラフ、折れ線グラフ-->
+        <div>
+            <h2>サンリオピューロランド年間入場者数</h2>
+            <div>
+                <canvas id="combo"></canvas>
             </div>
         </div>
     </main>
@@ -131,9 +296,9 @@
                         display: false,
                     },
                 },
+                maintainAspectRatio: false
             }
         });
-
         //レーダーチャート2
         const ctx2 = document.getElementById('radar2');
         const radar2 = new Chart(ctx2, {
@@ -162,9 +327,10 @@
                         display: false,
                     },
                 },
+                maintainAspectRatio: false
+
             }
         });
-
         //レーダーチャート3
         const ctx3 = document.getElementById('radar3');
         const radar3 = new Chart(ctx3, {
@@ -193,6 +359,7 @@
                         display: false,
                     },
                 },
+                maintainAspectRatio: false
             }
         });
 
@@ -224,9 +391,10 @@
                         display: false,
                     },
                 },
+                maintainAspectRatio: false
             }
         });
-        //レーダーチャート4
+        //レーダーチャート5
         const ctx5 = document.getElementById('radar5');
         const radar5 = new Chart(ctx5, {
             type: 'radar',
@@ -254,9 +422,151 @@
                         display: false,
                     },
                 },
+                //幅と高さの比率を動的に変化するやつ
+                maintainAspectRatio: false
             }
         });
         
+        //棒グラフ
+        /*let data = [32,22,19,12,10,5];
+        let xmax = 30;
+        let xmin = 0;
+        let xstep = 10;
+        const ctb1 = document.getElementById('bar1').getContext('2d');
+        const bar1 = new Chart(ctb1, {
+            type: 'bar',
+            data: {
+                labels: ["歯ぐるまんすたいる","笑う女","中年ヒロインOjisan's","となりのカッパさんち","へーすけ","ハンギョドン"],
+                datasets: [{
+                    axis: 'y',
+                    data: data,
+                    backgroundColor: [
+                        "rgba(255, 99, 132, 0.2)",
+                        "rgba(255, 159, 64, 0.2)",
+                        "rgba(255, 205, 86, 0.2)",
+                        "rgba(75, 192, 192, 0.2)",
+                        "rgba(54, 162, 235, 0.2)",
+                        "rgba(153, 102, 255, 0.2)",
+                    ],
+                    borderWidth: 1,
+                    borderColor: [
+                        "rgb(255, 99, 132)",
+                        "rgb(255, 159, 64)",
+                        "rgb(255, 205, 86)",
+                        "rgb(75, 192, 192)",
+                        "rgb(54, 162, 235)",
+                        "rgb(153, 102, 255)",                    
+                    ]
+                }],
+            },
+        });*/
+
+        let ctb1 = document.getElementById('bar1').getContext('2d');
+        let data_x = {
+            labels: ["歯ぐるまんすたいる","笑う女","中年ヒロインOjisan's","となりのカッパさんち","へーすけ","ハンギョドン"],
+            datasets: [{
+                label: null,
+                data: [32,22,19,12,10,5],
+                backgroundColor: [
+                    "rgba(255, 99, 132, 0.2)",
+                    "rgba(255, 159, 64, 0.2)",
+                    "rgba(255, 205, 86, 0.2)",
+                    "rgba(75, 192, 192, 0.2)",
+                    "rgba(54, 162, 235, 0.2)",
+                    "rgba(153, 102, 255, 0.2)",
+                ],
+                borderWidth: 1,
+                borderColor: [
+                    "rgb(255, 99, 132)",
+                    "rgb(255, 159, 64)",
+                    "rgb(255, 205, 86)",
+                    "rgb(75, 192, 192)",
+                    "rgb(54, 162, 235)",
+                    "rgb(153, 102, 255)",                    
+                ]
+            }],
+        };
+        let options = {
+            indexAxis: 'y',
+            scales: {
+                x:{
+                min: 0
+                }
+            },
+            //凡例非表示
+            plugins: {
+                legend: {
+                    display: false,
+                    },
+                },
+            plugins: {
+                datalabels: {
+                    font: {
+                        size: 13
+                    },
+                    formatter: function( value, context){
+                        return value.toString() + '%';
+                    }
+                }
+            }
+        };
+        let ex_chart = new Chart(ctb1, {
+            type: 'bar',
+            data: data_x,
+            options: options,
+            plugins: [
+                ChartDataLabels,
+            ],
+        });
+
+        //はぐるまん診断 ホバーでツールチップ表示
+        const target1 = document.getElementById('checkEvent');
+        const tooltip1 = document.getElementById('toolTip');
+        target1.addEventListener('mouseover', function(){
+            tooltip1.style.display = 'block';
+        });
+        //ツールチップ非表示
+        target1.addEventListener('mouseleave', function(){
+            tooltip1.style.display = 'none';
+        });
+
+        //複合グラフ
+        const ctc = document.getElementById('combo');
+        const combo = new Chart (ctc,{
+            data: {
+                labels:['2014年','2015年','2016年','2017年','2018年','2019年','2020年'],
+                datasets: [{
+                    type: 'bar',
+                    label: '新キャラデビュー数',
+                    data:[2,7,3,3,1,1,2],
+                    yAxisID: 'character'
+                },{
+                    type: 'line',
+                    label: '来場者数(単位：万人)',
+                    data: [126,158,181,198,219,68,43],
+                    yAxisID: 'visitors'
+                }],
+
+            },
+            options: {
+                responsive: false,
+                title: {
+                    display: true,
+                    text: '年間来場者数'
+                },
+            },
+            scales: {
+                'character': {
+                    type: 'linear',
+                    position: 'left',
+                },
+                'visitor': {
+                    type: 'linear',
+                    position: 'right',
+                }
+            },
+
+        })
     </script>
 </body>
 </html>
