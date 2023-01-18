@@ -37,9 +37,10 @@
         .imgR {
             width: 30%;
             min-width: 70px;
-            margin: 0 auto;
+            margin-top: 12px;
             position: absolute;    
             top: 65px;
+            left: -8px;
 
         }
         .radarChart {
@@ -328,7 +329,6 @@
                     },
                 },
                 maintainAspectRatio: false
-
             }
         });
         //レーダーチャート3
@@ -500,14 +500,19 @@
                     },
                 },
             plugins: {
+                //グラフ上にデータを表示
                 datalabels: {
                     font: {
                         size: 13
                     },
-                    formatter: function( value, context){
+                    formatter: function(value, context){
                         return value.toString() + '%';
                     }
-                }
+                },
+                //凡例非表示
+                legend: {
+                    display: false,
+                }, 
             }
         };
         let ex_chart = new Chart(ctb1, {
